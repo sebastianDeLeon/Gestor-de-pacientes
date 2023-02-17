@@ -1,0 +1,26 @@
+﻿@using Gestor.Core.Application.ViewModel.Paciente
+@model SavePacienteViewModel
+
+
+@{
+    bool editMode = Model.Id == 0 ? false : true;
+    ViewData["Title"] = "Borrar paciente";
+}
+
+<dialog open>
+  <article>
+    <h3>¿Estas seguro?</h3>
+    <p>
+      Seguro que decea al usuario @Model.nombre @Model.apellido<br />
+      Cedula: @Model.cedula
+    </p>
+    <form method="post" asp-controller="Paciente" asp-action="DeletePost">
+        <input type="hidden" asp-for="Id" />
+        <footer>
+          <button type="submit" class="delete"> Eliminar </button>
+        <a role="button" asp-controller="Paciente" asp-action="Index" class="contrast">Volver</a>
+        </footer>
+    </form>
+    
+  </article>
+</dialog>

@@ -1,0 +1,35 @@
+﻿@using Gestor.Core.Application.ViewModel.PruebasLaboratorio;
+@model List<PruebasLabViewModel>
+
+<div>
+    <div class="grid">
+        <a asp-controller="Pruebas" asp-action="Add" role="button">Crear</a>
+    </div>
+
+    <div>
+        <figure>
+            <table>
+                <thead>
+                    <th scope="col"> Nombre de la prueba </th>
+                    <th scope="col">  </th>
+                    <th scope="col">  </th>
+                </thead>
+                <tbody>
+                    @foreach (PruebasLabViewModel item in Model)
+                    {
+                        <tr>
+                            <td scope="row">@item.nombre_prueba</td>
+                            <td>
+                                <a role="button" class="contrast" asp-controller="Pruebas" asp-action="Edit" asp-route-id="@item.id">Editar</a>
+                            </td>
+                            <td>
+                                <a role="button" class="delete"  asp-controller="Pruebas" asp-action="Delete" asp-route-id="@item.id">Borrar</a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+
+            </table>
+        </figure>
+    </div>
+</div>

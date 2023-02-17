@@ -1,0 +1,17 @@
+﻿@using Gestor.Core.Application.ViewModel.ResultadoLaboratorio
+@using Gestor.Core.Application.ViewModel.PruebasLaboratorio
+@model SaveResultLabViewModel
+
+<form method="post" asp-controller="Resultado" asp-action="Add" >
+    <label>Paciente: @Model.pacientes.nombre @Model.pacientes.apellido</label>
+    <label>Cedula: @Model.pacientes.cedula </label>
+    <select asp-for=pruebaId >
+        @foreach (PruebasLabViewModel item in Model.pruebasList)
+        {
+            <option value=@item.id >@item.nombre_prueba</option>
+        }
+    </select>
+    <input asp-for=pacienteId hidden />
+    <button>Crear</button>
+
+</form>

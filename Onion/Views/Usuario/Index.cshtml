@@ -1,0 +1,33 @@
+﻿@using Gestor.Core.Application.ViewModel.Usuario
+@model List<UsuarioViewModel>
+
+    <a asp-controller="Usuario" asp-action="Add" role="button">Crear</a>
+@if (Model == null || Model.Count == 0)
+{
+    <h2>No hay usuarios creados</h2>
+    
+}
+else
+{
+    @foreach (UsuarioViewModel item in Model)
+    {
+        <article>
+          <header>@item.Nombre_de_usuario</header>
+          Nombre: @item.nombre<br/>
+          Apellido: @item.apellido<br/>
+          Correo: @item.correo<br/>
+          @if (@item.Admin)
+                {
+                <p>Tipo: Administrador</p>
+            }
+            else
+            {
+                <p>Tipo: Asistente</p>
+            }
+            <footer>
+                <a asp-controller="Usuario" asp-action="Edit" asp-route-id="@item.Id" role="button" class="update">Editar</a>
+                <a asp-controller="Usuario" asp-action="Delete" asp-route-id="@item.Id" role="button" class="delete">Borrar</a>
+            </footer>
+        </article>
+    }
+}

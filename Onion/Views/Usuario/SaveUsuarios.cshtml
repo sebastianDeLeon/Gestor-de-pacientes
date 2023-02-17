@@ -1,0 +1,60 @@
+﻿@using Gestor.Core.Application.ViewModel.Usuario;
+@model SaveUsuarioViewModel;
+
+@{
+    bool editMode = Model.Id == 0 ? false : true;
+    ViewData["Title"] = "Guardar usuario";
+}
+@if (editMode)
+{
+    <h2>Modo de edicion</h2>
+}else{
+    <h2>Modo de creacion</h2>
+}
+<form method="post" asp-controller="Usuario" asp-action=@(editMode ? "Edit":"Add")>
+    <input type="hidden" asp-for="Id" />
+
+    <label asp-for="Nombre_de_usuario">Nombre de usuario
+    <input asp-for="Nombre_de_usuario" />
+    <span>@ViewBag.UsuarioRep</span>
+    <span asp-validation-for="Nombre_de_usuario" class="text-danger"></span> 
+    </label>
+
+    <label asp-for="nombre">Nombre 
+    <input asp-for="nombre" />
+    <span asp-validation-for="nombre"></span> 
+    </label>
+
+    <label asp-for="apellido">Apellido
+    <input asp-for="apellido" />
+    <span asp-validation-for="apellido"></span> 
+    </label>
+
+    <label asp-for="correo">Correo
+    <input asp-for="correo" type="email" />
+    <span asp-validation-for="correo"></span> 
+    </label>
+
+    <label asp-for="password">Contraseña
+    <input asp-for="password" type="password" />
+    <span asp-validation-for="password"></span> 
+    </label>
+
+    <label name="password2">Confirmar contraseña
+    <input name="password2" type="password" />
+    <span>@ViewBag.contraseñas</span>
+    </label>
+
+    <label asp-for="Admin">Privileios de administrador
+    <input type="checkbox"  asp-for="Admin" id="admin" checked/>
+    <span asp-validation-for="Admin"></span> 
+    @*<label for="admin">Admin</label>*@
+    </label>
+
+    <label >¿Acepta ceder gratuitamente de su alma, cuenta bancaria y de tenerla libreria de steam por esta cuenta?
+    <input type="checkbox" required/>
+    @*<label for="admin">Admin</label>*@
+    </label>
+
+    <button type="submit" >Submit</button>
+</form>

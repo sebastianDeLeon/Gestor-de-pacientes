@@ -1,0 +1,70 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Gestor</title>
+    <link rel="stylesheet" href="~/css/pico.min.css">
+    <link rel="stylesheet" href="~/css/site.css">
+</head>
+
+<figure>
+<body>
+        <nav class="container-fluid">
+            <ul>
+                <li>
+                    <strong>Gestor</strong>
+                </li>
+                    </ul>
+            <ul>
+                <li>
+                    <a class="" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li>
+                    <a class="" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                </li>
+                <li>
+                    <a class="" asp-area="" asp-controller="Pruebas" asp-action="PruebasIndex">Prueba</a>
+                </li>
+                <li>
+                    <a class="" asp-area="" asp-controller="Resultado" asp-action="Index">Resultado</a>
+                </li>
+                <li>
+                    <a class="" asp-area="" asp-controller="Medico" asp-action="Index">Medico</a>
+                </li>
+                <li>
+                    <a class="" asp-area="" asp-controller="Paciente" asp-action="Index">Pacientes</a>
+                </li>
+                <li>
+                    <a class="" asp-area="" asp-controller="Citas" asp-action="Index">Citas</a>
+                </li>
+                <li>
+                    <a class="" asp-area="" asp-controller="Usuario" asp-action="Index">Usuario</a>
+                </li>
+                @*Mantenimiento de Usuarios(
+                ● Mantenimiento de Médicos
+                ● Mantenimiento de Pruebas de Laboratorio
+                ● Mantenimiento de Pacientes
+                ● Mantenimiento de Citas
+                ● Mantenimiento de resultados de Pruebas de Laboratorio
+                *@
+            </ul>
+        </nav>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="border-top footer text-muted">
+        <div class="container">
+            &copy; 2023 - Gestor - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    @*<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>*@
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</figure>
+</html>

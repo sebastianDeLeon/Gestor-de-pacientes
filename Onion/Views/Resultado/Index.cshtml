@@ -1,0 +1,38 @@
+﻿@using Gestor.Core.Application.ViewModel.ResultadoLaboratorio;
+@model List<ResultLabViewModel>
+
+    @if (Model == null || Model.Count == 0)
+{
+    <h2>No hay resultados</h2>
+    
+}
+else
+{
+    @foreach (ResultLabViewModel item in Model)
+    {
+        if (!item.completado)
+        {
+            <article>
+              <header></header>
+              <p>Paciente: @item.pacientes.nombre @item.pacientes.apellido</p>
+              <p>Cedula: @item.pacientes.cedula
+              </p>
+
+              <p>Prueba: @item.pruebas.nombre_prueba</p>
+
+              Resultado:<br/>
+              <p>
+                  @item.resultado
+              </p>
+              <br/>
+          
+                <footer>
+                    <a asp-controller="Resultado" asp-action="Edit" 
+                    asp-route-id="@item.Id" role="button" 
+                    class="update">Reportar resultado</a>
+                </footer>
+            </article>
+        }
+    }
+}
+

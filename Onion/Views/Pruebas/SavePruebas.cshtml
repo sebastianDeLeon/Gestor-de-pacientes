@@ -1,0 +1,20 @@
+﻿@using Gestor.Core.Application.ViewModel.PruebasLaboratorio;
+@model SavePruebasLabViewModel
+
+@{
+    bool editMode = Model.Id == 0 ? false : true;
+    ViewData["Title"] = "Guardar prueba";
+}
+@if (editMode)
+{
+    <h2>Modo de edicion</h2>
+}else{
+    <h2>Modo de creacion</h2>
+}
+<form method="post" asp-controller="Pruebas" asp-action=@(editMode ? "Edit":"Add")>
+    <input type="hidden" asp-for="Id" />
+    <label asp-for="nombre_prueba">Nombre de la prueba</label>
+    <input asp-for="nombre_prueba" />
+
+    <button type="submit" >Submit</button>
+</form>

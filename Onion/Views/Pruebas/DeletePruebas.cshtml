@@ -1,0 +1,21 @@
+﻿@using Gestor.Core.Application.ViewModel.PruebasLaboratorio;
+@model SavePruebasLabViewModel;
+ 
+
+<dialog open>
+  <article>
+    <h3>¿Estas seguro?</h3>
+    <p>
+      Seguro que decea la prueba @Model.nombre_prueba
+    </p>
+    <form method="post" asp-controller="Pruebas" asp-action="DeletePost">
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="nombre_prueba" />
+        <footer>
+          <button type="submit" class="delete"> Eliminar </button>
+        <a role="button" asp-controller="Pruebas" asp-action="PruebasIndex" class="contrast">Volver</a>
+        </footer>
+    </form>
+    
+  </article>
+</dialog>

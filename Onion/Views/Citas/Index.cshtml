@@ -1,0 +1,63 @@
+﻿@using Gestor.Core.Application.ViewModel.Citas;
+@model List<CitasViewModel>
+
+<div>
+    <a asp-controller="Citas" asp-action="Add" role="button">Crear</a>
+</div>
+
+<div>
+
+    @foreach (CitasViewModel item in Model)
+    {
+        <article>
+            <header></header>
+
+            <strong>Nombre del paciente: </strong>
+            <p>@item.paciente.nombre @item.paciente.apellido</p>
+
+            <strong>Nombre del medico: </strong>
+            <p>@item.medico.nombre @item.medico.apellido</p>
+
+            <strong>Fecha y hora de la cira: </strong>
+            <p>@item.Fecha_hora</p>
+
+            <strong>Causa de la cita: </strong>
+            <p>@item.motivo</p>
+
+            <strong>Estado de la Cita: </strong>
+            @if (!item.citaCompletada)
+            {
+                @if (!item.estadoResultado)
+                {
+                    <span class="danger">Pendiente de consulta</span>
+                    <footer>
+                        <form method="post" asp-controller="Resultado" asp-action="AddF" >
+                            <input value=@item.pacienteId name="pacienteId" hidden/>
+                            <button type="submit">
+                            Consultar
+                            </button>
+                        </form>
+                    </footer>
+                }
+                @if (item.estadoResultado)
+                {
+                    <span class="contrast">pendiente de resultados</span>
+                    <footer>
+                        <form asp-controller="Resultado" asp-action="Add" >
+                            <button type="submit" >Consultar resultados</button>
+                        </form>
+                    </footer>
+                }
+            }
+            else
+            {
+                <button class="contrast">consultar resultados</button>
+                    <footer>
+                        <a asp-controller="Resultados" asp-action="Add" >Ver resultados</a>
+                    </footer>
+            }
+
+        </article>
+    }
+
+</div>

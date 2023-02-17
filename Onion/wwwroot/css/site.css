@@ -1,0 +1,39 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+.delete {
+    background-color: #f44336;
+    color:aliceblue;
+}
+.update {
+    background-color: #555555;
+    color: aliceblue;
+}
+
+article {
+    width: fit-content;
+    height: fit-content;
+}
+span {
+    color:red;
+}
+
+img{
+    width: 250px;
+    height: 250px;
+}

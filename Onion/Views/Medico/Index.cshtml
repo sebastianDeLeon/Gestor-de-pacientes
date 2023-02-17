@@ -1,0 +1,32 @@
+﻿@using Gestor.Core.Application.ViewModel.Medico
+@model List<MedicoViewModel>
+
+ <a asp-controller="Medico" asp-action="Add" role="button">Crear</a>
+@if (Model == null || Model.Count == 0)
+{
+    <h2>No hay medicos creados</h2>
+    
+}
+else
+{
+    <div class="row-cols-2">
+
+    
+        @foreach (MedicoViewModel item in Model)
+        {
+            <article>
+              <header>@item.nombre @item.apellido</header>
+              <div>
+                  <img src=@item.foto />
+              </div>
+              Cedula: @item.cedula<br/>
+              Correo: @item.correo<br/>
+              Telefono: @item.telefono<br/>
+              <footer>
+                    <a asp-controller="Medico" asp-action="Edit" asp-route-id="@item.Id" role="button" class="update">Editar</a>
+                    <a asp-controller="Medico" asp-action="Delete" asp-route-id="@item.Id" role="button" class="delete">Borrar</a>
+               </footer>
+            </article>
+        }
+    </div>
+}

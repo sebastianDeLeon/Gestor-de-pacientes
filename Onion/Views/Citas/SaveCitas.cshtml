@@ -1,0 +1,52 @@
+﻿@using Gestor.Core.Application.ViewModel.Citas
+@using Gestor.Core.Application.ViewModel.Medico
+@using Gestor.Core.Application.ViewModel.Paciente
+@model SaveCitasViewModel
+
+
+
+
+
+@{
+    ViewData["Title"] = "Guardar cita";
+}
+
+<h2>Modo de creacion</h2>
+
+<form method="post" asp-controller="Citas" asp-action="Add")>
+    <input type="hidden" asp-for="Id" />
+
+
+    <select asp-for=pacienteId )">
+        @foreach (PacienteViewModel item in Model.pacientesList)
+        {
+            <option value="@item.Id"> @item.nombre @item.apellido </option>
+        }
+    </select>
+
+    <select asp-for=medicoId )">
+        @foreach (MedicoViewModel item in Model.medicoList)
+        {
+            <option value="@item.Id"> @item.nombre @item.apellido </option>
+        }
+    </select>
+
+    <label asp-for=Fecha_hora>Fecha y hora</label>
+    <input asp-for=Fecha_hora type="datetime-local"/>
+
+    <label asp-for="motivo">Causa</label>
+    <input asp-for=motivo/>
+
+    
+    @if (Model.estadoResultado)
+    {
+        
+    }
+    @if (!Model.estadoResultado)
+        {
+            
+        }
+    
+
+    <button type="submit" >Submit</button>
+</form>

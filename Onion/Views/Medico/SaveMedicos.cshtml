@@ -1,0 +1,48 @@
+﻿@using Gestor.Core.Application.ViewModel.Medico
+@model SaveMedicoViewModel
+
+@{
+    bool editMode = Model.Id == 0 ? false : true;
+    ViewData["Title"] = "Guardar usuario";
+}
+
+<form method="post" asp-controller="Medico" asp-action=@(editMode ? "Edit":"Add")>
+    <input type="hidden" asp-for="Id" />
+
+    <label asp-for="cedula">Cedula
+    <span asp-validation-for="cedula" class="text-danger"></span> 
+    <input asp-for="cedula" />
+    </label>
+
+    <label asp-for="nombre">Nombre 
+    <span asp-validation-for="nombre"></span> 
+    <input asp-for="nombre" />
+    </label>
+
+    <label asp-for="apellido">Apellido
+    <span asp-validation-for="apellido"></span> 
+    <input asp-for="apellido" />
+    </label>
+
+    <label asp-for="correo">Correo
+    <span asp-validation-for="correo"></span> 
+    <input asp-for="correo" type="email" />
+    </label>
+
+    <label asp-for="telefono">telefono
+    <span asp-validation-for="telefono"></span> 
+    <input asp-for="telefono" type="tel" />
+    </label>
+
+    <label asp-for="foto">Foto
+    <span asp-validation-for="foto"></span> 
+    <input type="text"  asp-for="foto" id="admin" checked/>    @*<label for="admin">Admin</label>*@
+    </label>
+
+    <label >¿Acepta ceder gratuitamente de su alma, cuenta bancaria y de tenerla libreria de steam por esta cuenta?
+    <input type="checkbox" required checked/>
+    @*<label for="admin">Admin</label>*@
+    </label>
+
+    <button type="submit" >Submit</button>
+</form>
